@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>社科赛斯</title>
+<link type="text/css" href="./statics/user/56/56/themes/default/css/style.css" rel="stylesheet" />
+<link type="image/x-icon" href="http://net.bjmba.com/statics/default/statics/xslfavicon.ico" rel="icon" />
+<link type="image/x-icon" href="http://net.bjmba.com/statics/default/statics/xslfavicon.ico" rel="bookmark" />
+<link type="text/css" href="./statics/user/56/56/themes/default/css/newstyle.css" rel="stylesheet" />
+<script type="text/javascript" src="http://127.0.0.1/statics/user/56/56/themes/default/js/jquery-1.6.2.min.js" ></script>
+<script type="text/javascript" src="http://127.0.0.1/statics/user/56/56/themes/default/js/tabs.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/statics/user/56/56/themes/default/../../../../../../editor/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+<div class="top">
+<div class="header"> 
+   <div class="logo"><a href="" target="_blank"><img src="./statics/user/56/56/themes/default/images/logo.png" alt="logo" width="226" height="113" border="0" /></a></div> 
+   <div class="nav">
+   		<ul>
+        	<li><a href="index.html" class="nav1"></a></li>
+            <li><a href="morecourse.html" class="nav2"></a></li>
+            <li><a href="newteacher.html" class="nav3"></a></li>
+            <li><a href="testonline.html" class="nav4"></a></li>
+            
+            <div id="widget_mloginbar">
+     <script language="javascript">
+     var refreshtime=20000; //10 秒  
+     var refreshtimer=setInterval("onlinerefresh()",refreshtime);  
+     var refreshurl="widget_yes.html";
+     function onlinerefresh(){  
+   		$.ajax({
+			url : refreshurl,
+			dataType : "json",
+			success : function(msg) {
+			},
+			error : function() {
+			}
+		});
+     } 
+     </script>
+	<li class="home_login"><a href="member_index.html" class="dl">hebbaixue</a> [<a href="member_logout.html"  class="reg">退出</a>]</li>
+</div>
+        </ul>
+   </div> 
+</div> 
+</div><script>
+var app_path='.'</script><div class="c_center">
+<div id="widget_1"><link href="./statics/user/56/56/themes/default/css/geren.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://127.0.0.1/statics/user/56/56/themes/default/js/jquery.pager.js"></script>
+<link href="http://127.0.0.1/statics/css/Pager.css" rel="stylesheet" type="text/css" />
+<div class="MemberCenter">
+	<div class="siteparttitle">
+		<div class="title"></div>
+	</div>
+
+
+	<!--center-->
+
+	<div class="MemberSidebar" style="width:980px;margin:0 auto;">
+
+		<div class="cen_fa">
+			<div class="cen_left">
+				<ul>
+					<li>
+					<h3   class="menu_mycourse1"
+					>我的课程</h3>
+						<div>
+						<a href="member_course.html" class="0" >已开通课程 </a>
+						<a href="member_misscourse.html" class="misscourse" >已经开通补课课程 </a>
+						<a href="member_unpaid.html" class="0" >未付费课程 </a>
+						<a href="morecourse.html" class="course"   target="_blank" >我要选课 </a>
+						<a href="member_listen.html" class="0" >学习记录 </a>
+						<a href="member_buycourse.html" class="0" >网银购课记录 </a>
+						</div>
+					</li>
+
+
+					<li>
+					<h3   class="menu_card1" 
+					>我的学习卡</h3>
+						<div>
+						<a href="member_rest.html" class="0" >账号余额 </a>
+						<a href="member_recharge.html" class="0" >我要充卡 </a>
+						<a href="member_card.html" class="0" >充卡记录 </a>
+						</div>
+					</li>
+
+
+					<li>
+					<h3    class="menu_test1"
+					>在线测评</h3>
+						<div>
+						<a href="member_paper_course.html" class="0" >我的考试 </a>
+						<a href="member_paper.html" class="0" >考试记录 </a>
+						</div>
+					</li>
+
+
+					<li>
+					<h3   class="menu_info1" 
+					>我的信息</h3>
+						<div>
+						<a href="member_info.html" class="0" >个人信息 </a>
+						<a href="member_security.html" class="0" >修改密码 </a>
+						</div>
+					</li>
+
+				</ul> 
+			</div>
+		
+
+		<div class="cen_rght"><script type="text/javascript" src="/resource/com/enation/seveneast/widget/member/js/jquery.pager.js"></script>
+<link rel="stylesheet" type="text/css" href="./statics/themes/default/css/easyui.css" />
+<link rel="stylesheet" type="text/css" href="./statics/themes/easyuicss/themes/icon.css" />
+<script type="text/javascript" src="./statics/themes/easyuijs/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="./statics/themes/easyuijs/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="./statics/themes/easyuijs/easyui-lang-zh_CN.js"></script>
+<link href="./statics/css/Pager.css" rel="stylesheet" type="text/css" />
+			<div class="cen_rght_top">
+				<a href="">首页</a>>
+				<a href=""><b>个人中心</b></a>
+			</div>
+			<div class="cen_rght_text">
+				<div class="cen_rght_list">
+					<span>
+						<em><a href="member_index.html"><img src="/data/photo/head_1.jpg" /></a></em>
+						  <p><a href="member_head.html">更换头像</a></p>  <p><a href="member_security.html">修改密码</a></p>
+						<p><a href="member_info.html">修改个人资料</a></p>
+					</span>
+					<font>
+						<strong style="color:#ff0000;">hebbaixue</strong> 您好！<br />
+						今天是
+					<strong>
+							<script language="JavaScript">
+							today=new Date();
+							var hours = today.getHours();
+							var minutes = today.getMinutes();
+							var seconds = today.getSeconds();
+							var timeValue = "" + ((hours >12) ? hours -12 :hours); timeValue += ((minutes < 10) ? ":0" : ":") + minutes+"";
+							timeValue += (hours >= 12) ? "PM" : "AM";
+							function initArray(){
+							this.length=initArray.arguments.length
+							for(var i=0;i<this.length;i++)
+							this[i+1]=initArray.arguments[i] }
+							var d=new initArray("星期日","星期一","星期二","星期三","星期四","星期五","星期六"); document.write(" ",today.getFullYear(),"年","",today.getMonth()+1,"月","",today.getDate(),"日 ",d[today.getDay()+1] ); 
+							</script>
+					</strong>
+						<br />
+						上次登录时间为
+						<strong class="point">
+						2018年03月23日 13:03:11</strong><br />
+						
+					 	您的学习卡账户余额：<strong class="red">0</strong>元<br />
+					 	失效金额 0元
+					 	<!-- <a class="btn_input" href="member_recharge.html" ></a> --><br />
+					</font>
+				</div>
+	
+			</div>
+		    <div class="tabs_free" style="padding-top:10px;">
+		       <ul>
+		           <li class="current"><a href="member_mycourse.html">我要听课</a></li>
+		           <li><a href="member_mynotice.html">公告栏</a></li>
+		       </ul>
+		    </div>
+		  		<table id="tt" style="width:740;height:650px;color:#333333;"> </table>
+			<!-- 
+			<div class="cen_rght_input" style="clear:both;">
+				<ul>
+				<li><s><img src="./statics/user/56/56/themes/default/images/zy_93.jpg" /></s><p>您有<b></b>个开通课程</p><a href="member_course.html">立即听课</a></li>
+					<li><s><img src="./statics/user/56/56/themes/default/images/zy_94.jpg" /></s><p>您有<b>0</b>个未付费课程</p><a href="member_unpaid.html">立即支付</a></li> 
+				</ul>
+			</div>
+			 -->
+<script>
+$(function(){
+	$('#tt').treegrid({
+		url : "widget.html",
+		//url:'./statics/css/treegrid_data3.json',
+		idField:'cid',
+		treeField:'name',
+		fitColumns:true,
+		border:false,
+		onLoadSuccess:function(){
+			$(".datagrid-view").css({"color":"#333333"});
+			$(".datagrid-view").css({"height":"650px"});
+			$(".datagrid-view").css({"overflow-y":"auto"}); 
+		},
+		columns:[[
+					{field:'name',title:'课程名称',width:590,align:'left'},
+					{field:'endtime',title:'有效截止日期',width:100,align:'center'},   
+					{field:'courseurl',title:'操作',width:50,align:'center'}
+			    ]],
+		onBeforeExpand:function(row){
+			if(row){
+				
+			}
+				
+		}
+		   
+	});
+});
+$(function(){
+	$("#hz6d_53kf_invite_hid").click(function(){
+		$("#kfivtwin").css("display","none");
+	});
+});
+</script>
+
+</div>
+
+		</div>
+
+		<!--center-->
+		<div style="clear:both;"></div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<script>	
+var type='1';
+if(type!=1){
+	$(".misscourse").hide();
+}else{$(".misscourse").show;}
+</script></div>
+</div>
+<div class="bot"></div>
+<div class="footer"> 
+	<p style="color:#444444;">MBA备考咨询：<span style="color:#990000;">400-010-9168</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系地址：北京市海淀区苏州街18号长远天地大厦A1-1901室 </p>
+	<p style="color:#444444;">京ICP备13040890号-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律顾问：刘勇 </p>
+	<p style="color:#444444;">Copyright  2002-2011 中国MBA备考网Inc. All Rights Reserved. 北京市社科赛斯企业管理咨询中心 版权所有  </p>
+	<p style="color:#444444;">中国MBA备考网是北京社科赛斯教育集团旗下权威MBA考试辅导网站，服务内容：考前培训、远程辅导、面试密训、备考资料、在线答疑等。</p>
+</div>
+	
+</body>
+</html>

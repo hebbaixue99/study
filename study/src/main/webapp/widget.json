@@ -1,0 +1,437 @@
+{
+	"total": 110,
+	"rows": 
+	[
+		{
+			"cid": 1032,
+			"name": "笔试（一班）海淀",
+			"sort": 50,
+			"leaf": 0,
+			"state": "open",
+			"_parentId": 951,
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1098,
+			"name": "词汇",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1032,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1099,
+			"name": "基础班",
+			"sort": 50,
+			"leaf": 0,
+			"state": "open",
+			"_parentId": 1032,
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1104,
+			"name": "强化班",
+			"sort": 50,
+			"leaf": 0,
+			"state": "open",
+			"_parentId": 1032,
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1109,
+			"name": "模考串讲",
+			"sort": 50,
+			"leaf": 0,
+			"state": "open",
+			"_parentId": 1032,
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1260,
+			"name": "写作",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1099,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1100,
+			"name": "数学",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1099,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1101,
+			"name": "逻辑",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1099,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1103,
+			"name": "英语",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1099,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1105,
+			"name": "数学",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1104,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1106,
+			"name": "逻辑",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1104,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1107,
+			"name": "英语",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1104,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1108,
+			"name": "写作",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1104,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1110,
+			"name": "讲评",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1109,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1111,
+			"name": "串讲",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1109,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1615,
+			"name": "B卷讲评",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1109,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1616,
+			"name": "B卷数学讲评",
+			"sort": 50,
+			"leaf": 0,
+			"state": "open",
+			"_parentId": 1614,
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1621,
+			"name": "B卷逻辑讲评",
+			"sort": 50,
+			"leaf": 0,
+			"state": "open",
+			"_parentId": 1614,
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1617,
+			"name": "B1",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1616,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1618,
+			"name": "B2",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1616,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1619,
+			"name": "B3",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1616,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1620,
+			"name": "B4",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1616,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1622,
+			"name": "B1",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1621,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1623,
+			"name": "B2",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1621,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-09-21"
+		},
+
+		{
+			"cid": 1171,
+			"name": "清北人",
+			"sort": 50,
+			"leaf": 0,
+			"state": "open",
+			"_parentId": 1170,
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1314,
+			"name": "清北人材料申请课",
+			"sort": 60,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1172,
+			"name": "提面一班（国贸）",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1304,
+			"name": "提面三班（国贸）",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1305,
+			"name": "提面五班（国贸）",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1306,
+			"name": "提面六班（海淀）",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1310,
+			"name": "提面四班（海淀）",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1357,
+			"name": "EMBA材料解析（网课录播）",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1369,
+			"name": "2018面试选修课",
+			"sort": 50,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1219,
+			"name": "提面二班（农大）",
+			"sort": 49,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1450,
+			"name": "提面七班（国贸）",
+			"sort": 41,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 1415,
+			"name": "模拟面试演示课",
+			"sort": 20,
+			"leaf": 1,
+			"state": "",
+			"_parentId": 1171,
+			"courseurl": "进入<\/a>",
+			"iconCls": "icon-camera",
+			"endtime": "2018-07-08"
+		},
+
+		{
+			"cid": 951,
+			"name": "备战2018年专硕课程",
+			"sort": 310,
+			"_parentId": 0
+		},
+
+		{
+			"cid": 1170,
+			"name": "备战2018提前面试",
+			"sort": 60,
+			"_parentId": 951
+		}
+	]
+}

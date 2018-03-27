@@ -1,0 +1,180 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, lengend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+body, button, input, select, textarea, th {
+    background-color: #FFFFFF;
+    color: #8B8B8B;
+    font-family: Arial,Tahoma,"hiragino sans gb",Helvetica;
+    font-size: 12px;
+    line-height: 1.5em;
+}
+a:link,a:visited{
+color:#164688;
+}
+a:hover{
+color:#ec9704;
+}
+.new_header{_margin-top:0;}
+.new_nav1{_width:710px;}
+.new_left{width:714px;float:left;}
+.new_right{width:252px;float:right;}
+.new_banner{
+margin-top:0;
+margin-bottom:10px;
+_width:700px;
+}
+.new_new1{
+width:716px;
+}
+.new_login,.new_news{
+border:1px solid #cccccc;
+overflow:hidden;
+}
+.new_login{
+margin-bottom:10px;
+}
+.new_news h3{
+border-bottom:1px solid #cccccc;
+height: 45px;
+padding-top: 8px;
+padding-left: 10px;s
+}
+
+.teacher1 {
+    background: url("../images/teacher_bg.png") no-repeat scroll center bottom transparent;
+    height: 200px;
+    margin-top: 15px;
+    width: 249px;
+}
+.teacher_title {
+    border-bottom: 2px solid #CCCCCC;
+    height: 45px;
+    line-height: 40px;
+    margin: 0 auto;
+    width: 88%;
+}
+
+.teahcer_title_name {
+    color: #202020;
+    float: left;
+    font-family: Microsoft Yahei;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.teahcer_title_zhiwu {
+    float: left;
+    font-size: 12px;
+    padding-top: 8px;
+    height: 30px;
+    overflow: hidden;
+    width: 135px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.teacher_text {
+    color: #333333;
+    font-size: 12px;
+    line-height: 180%;
+    margin: 0 auto;
+    padding-top: 8px;
+    width: 88%;
+    height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.new_content{
+margin-top:10px;
+}
+.new_tg2{
+height:105px;
+padding-top:10px;
+margin-left:0px;
+}
+.new_banner{
+border:1px solid #cccccc;
+padding: 7px;
+}
+.new_lesson_nav{
+height:40px;
+width:100%;
+}
+.new_arrow_l{
+width:28px;height:40px;float:left;text-align:center;background:url(../images/arrow_l.png) no-repeat;cursor: pointer;
+}
+.new_arrow_r{
+width:28px;height:40px;float:right;text-align:center;background:url(../images/arrow_r.png) no-repeat;cursor: pointer;
+}
+.new_nav{
+float:left;
+width:682px;
+}
+.new_nav ul{
+list-style:none;
+}
+.new_nav ul li{
+float:left;
+font-size:12px;
+font-weight:normal;
+text-align:center;
+background:url(../images/menu_bg_normal1.png) no-repeat;
+margin: 0 0 0 3px;
+padding: 2px 14px 4px 6px;
+width: 80px;
+height:24px;
+overflow:hidden;
+width:106px;
+text-align:left;
+}
+.new_nav ul li a:hover{
+color:#000000;
+}
+.new_nav_current{
+background:#ffa200;
+color:#ffffff;
+border-top:0;
+}
+.new_nav_current a:link,.new_nav_current a:visited{
+color:#ffffff;
+}
+.new_nav_current a:hover{
+color:#ffffff;
+}
+.new_news_text{
+font-size:12px;
+font-weight:bold;
+color:#01404f;
+}
+#alldiv dt{
+
+text-align:center;
+width:205px;
+height:160px;
+
+}
+.new_bot{
+margin-top:0;
+}
+.new_tg1{
+padding-top:10px;
+}
+.new_side_l .current{
+border-bottom: 5px solid #FFFFFF;
+}
+.hotlesson_title1{
+color:#164688;
+font-size:14px;
+font-weight:bold;
+}
+.hotlesson_title1 span{
+width: 205px; _width: 205px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;font-size:14px;
+}
+
+.orange {
+    color: #FF6600;
+    font-weight:bold;
+}

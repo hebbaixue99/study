@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+ul.pages {
+display:block;
+border:none;
+text-transform:uppercase;
+font-size:10px;
+margin:10px 0 10px;
+padding:0;
+float:right;
+list-style:none;
+}
+
+ul.pages li {
+border:1px solid #FFFFFF;
+float:left;
+font-size: 16px;
+font-weight: normal;
+height: 58px;
+line-height: 58px;
+margin: 0 5px;
+padding: 0 9px;
+width:12px;
+background:none;
+}
+
+
+ul.pages li:hover {
+border:1px solid #C6C6C6;
+font-size: 16px;
+font-weight: normal;
+height: 58px;
+line-height: 58px;
+margin: 0 5px;
+padding: 0 9px;
+width:12px;
+}
+
+ul.pages li.pgEmpty {
+color:#ddd;
+}
+
+ul.pages li.pgNext {
+font-family: Simsun;
+font-weight: bold;
+vertical-align: top;
+}
+
+
+
+ul.pages li.pgCurrent {
+background:none repeat scroll 0 0 #3177D8;
+border:1px solid #3177D8;
+color:#FFFFFF;
+}

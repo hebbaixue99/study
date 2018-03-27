@@ -1,0 +1,71 @@
+<skin>  
+<elements basePath="../../statics/flash/blue/">  
+        <element id="playButtonNormal" src="playButtonNormal.png"/>  
+        <element id="playButtonOver" src="playButtonOver.png"/>  
+		<element id="playButtonDown" src="playButtonDown.png"/>
+		<element id="pauseButtonNormal" src="pauseButtonNormal.png"/>
+		<element id="pauseButtonOver" src="pauseButtonOver.png"/>
+		<element id="pauseButtonDown" src="pauseButtonDown.png"/>
+		<element id="playButtonOverlayNormal" src="playButtonOverlayNormal.png"/>
+		<element id="playButtonOverlayOver" src="playButtonOverlayOver.png"/>
+		<element id="playButtonOverlayDown" src="playButtonOverlayDown.png"/>
+		<element id="controlBarBackdrop" src="controlBarBackdrop.png"/>
+		<element id="controlBarBackdropLeft" src="controlBarBackdropLeft.png"/>
+		<element id="controlBarBackdropRight" src="controlBarBackdropRight.png"/>
+		<element id="scrubBarLoadedTrack" src="scrubBarLoadedTrack.png"/>
+		<element id="scrubBarLoadedTrackEnd" src="scrubBarLoadedTrackEnd.png"/>
+		<element id="scrubBarPlayedTrack" src="scrubBarPlayedTrack.png"/>
+		<element id="scrubBarTrack" src="scrubBarTrack.png"/>
+		<element id="scrubBarTrackLeft" src="scrubBarTrackLeft.png"/>
+		<element id="scrubBarTrackRight" src="scrubBarTrackRight.png"/>
+		<element id="scrubBarScrubberNormal" src="scrubBarScrubberDown.png"/>
+		<element id="scrubBarScrubberDown" src="scrubBarScrubberDown.png"/>
+		<element id="scrubBarScrubberOver" src="scrubBarScrubberOver.png"/>
+		<element id="fullScreenEnterButtonDown" src="fullScreenEnterButtonDown.png"/>
+		<element id="fullScreenEnterButtonNormal" src="fullScreenEnterButtonNormal.png"/>
+		<element id="fullScreenEnterButtonOver" src="fullScreenEnterButtonOver.png"/>
+		<element id="fullScreenLeaveButtonDown" src="fullScreenLeaveButtonDown.png"/>
+		<element id="fullScreenLeaveButtonNormal" src="fullScreenLeaveButtonNormal.png"/>
+		<element id="fullScreenLeaveButtonOver" src="fullScreenLeaveButtonOver.png"/>
+		<element id="unmuteButtonNormal" src="unmuteButtonNormal.png"/>
+		<element id="unmuteButtonOver" src="unmuteButtonOver.png"/>
+		<element id="unmuteButtonDown" src="unmuteButtonDown.png"/>
+
+		<element id="volumeButtonNormal" src="volumeButtonHighNormal.png"/>
+		<element id="volumeButtonDown" src="volumeButtonHighOver.png"/>
+		<element id="volumeButtonOver" src="volumeButtonHighDown.png"/>
+
+		<element id="volumeButtonHighNormal" src="volumeButtonHighNormal.png"/>
+		<element id="volumeButtonHighOver" src="volumeButtonHighOver.png"/>
+		<element id="volumeButtonHighDown" src="volumeButtonHighDown.png"/>
+
+		<element id="volumeButtonMedNormal" src="volumeButtonMedNormal.png"/>
+		<element id="volumeButtonMedOver" src="volumeButtonMedOver.png"/>
+		<element id="volumeButtonMedDown" src="volumeButtonMedDown.png"/>
+
+		<element id="volumeButtonLowNormal" src="volumeButtonLowNormal.png"/>
+		<element id="volumeButtonLowOver" src="volumeButtonLowOver.png"/>
+		<element id="volumeButtonLowDown" src="volumeButtonLowDown.png"/>
+
+		<element id="volumeBarBackdrop" src="volumeBarBackdrop.png"/>
+		<element id="volumeBarSliderNormal" src="volumeBarSliderNormal.png"/>
+		<element id="volumeBarSliderDown" src="volumeBarSliderDown.png"/>
+		<element id="volumeBarSliderOver" src="volumeBarBackdrop.png"/>
+		<element id="volumeButtonNormal" src="volumeButtonNormal.png"/>
+		<element id="volumeButtonDown" src="volumeButtonDown.png"/>
+		<element id="volumeButtonOver" src="volumeButtonOver.png"/>
+		
+ 
+		<element id="volumeBarTrack" src="volumeBarTrack.png"/>
+		<element id="volumeBarTrackEnd" src="volumeBarTrack.png"/>
+		
+		
+
+		<element id="speedon" src="icon1.png"/>
+		<element id="speedoff" src="zhuan.swf"/>
+		<element id="offcould" src="zhuan.swf"/>
+		<element id="oncould" src="icon3.png"/>
+
+		
+</elements>  
+</skin>

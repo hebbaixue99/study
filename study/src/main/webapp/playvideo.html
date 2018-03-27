@@ -1,0 +1,462 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="./statics/js/common/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="./statics/flash/AC_OETags.js"></script>
+<script type="text/javascript" src="./statics/flash/swfobject.js"></script>
+<script type="text/javascript" src="./statics/flash/swfparsequerystring.js"></script>
+<script type="text/javascript" src="./flashList.js"></script>
+<style>
+	body { margin: 0px; overflow:hidden }
+	.box1{width:205px;}
+	.box{width:205px;*width:207px;_width:207px;}
+	.vsc-initialized{
+	 height:100%;
+	 top:2px;
+	}
+</style>
+<link type="text/css" href="./statics/flash/player.css" rel="stylesheet" />
+<script language="JavaScript" type="text/javascript">
+	var bGetPlayed=0;
+	var swfVersionStr = "10.1.0";
+	var xiSwfUrlStr = "./statics/flash/playerProductInstall.swf";
+	var mReduceCnt= "./seveneast/exam/student!ReduceCnt.do?lessonid=12137##600";
+	//左边视频 
+//	alert(mReduceCnt);
+	function msg(message){
+		console.info(message);
+	}
+	var cid=window.location.href.split("cid=")[1];
+	var flashUrl = flashList[cid];
+	var flashvars_7ehdplayer = {id: "1"	   										,	
+				//src: "http://cdn1.7east.com/flashstream/czsbook/flash/bz2018/18hd/qh/8-5/qhxz101/20170807145505.f4m", 
+				src: flashUrl, 
+				autoPlay: "true"	   		,
+				controlBarAutoHide: "false"	,	
+				controlBarPosition: "bottom",
+				tipinfo:"社科赛斯",
+				modifystudyrec:mReduceCnt,
+		        skin:"./statics/flash/blue/blue.xml",
+				scaleMode:"stretch"};
+	var params_7ehdplayer = {};
+	params_7ehdplayer.quality = "high";
+	params_7ehdplayer.bgcolor = "#ffffff";
+	params_7ehdplayer.wmode = "transparent";
+	params_7ehdplayer.allowscriptaccess = "always";
+	params_7ehdplayer.allowfullscreen = "true";
+	var attributes_7ehdplayer = {};
+	attributes_7ehdplayer.id = "7eHDPlayer";
+	attributes_7ehdplayer.name = "7eHDPlayer";
+	attributes_7ehdplayer.align = "middle";
+	swfobject.embedSWF(
+		"./statics/flash/7eHDPlayer.swf", "flashContent", 
+		"860", "545", 
+		swfVersionStr, xiSwfUrlStr, 
+		flashvars_7ehdplayer, params_7ehdplayer, attributes_7ehdplayer);
+	swfobject.createCSS("#player", "display:block;float:right;");
+	swfobject.createCSS("#teacherPhoto", "display:block;float:left;"); 
+	/* 右下章节
+	var flashvars_xml = {xmlhref: "http://cdn1.7east.com/czsbook"};
+	var params_xml = {};
+	params_xml.quality = "high";
+	var attributes_xml = {};
+	swfobject.embedSWF(
+		"./statics/flash/xmlParse.swf", "xmldivflash", 
+		"1", "1", 
+		swfVersionStr, xiSwfUrlStr, 
+		flashvars_xml, params_xml, attributes_xml);
+	//swfobject.createCSS("#xmldiv", "display:none;float:right;");
+    */
+	var lastPage = 0;
+	 var arrayDisTm=new Array();
+    function onPlayMediaTime(currentTime, duration){
+    	$(".showmintime").attr("value",currentTime);
+		 if (currentTime==duration){
+		       document.getElementById("7eHDPlayer").Stop();  	
+		 }
+	     var k=0;
+		 for (var k=0; k<arrayDisTm.length; k++){
+		     if (arrayDisTm[k]<currentTime&&currentTime<arrayDisTm[k+1]){
+				
+			     break;
+		     }
+		 }
+		 
+		 if (lastPage!=k){
+			if (k>=arrayDisTm.length)
+			   return;
+			top.document.getElementById("EHPlayer").callGotoPage(k+1);
+			lastPage = k;
+			selectSkipPage(k+1);
+			//alert(k+"  "+lastPage);
+		 }
+	}
+	 
+	function selectSkipPage(pageNo){
+		var temp1 = $(".table1 tr"); 
+		for(var i=0;i<temp1.length;i++){
+			var allow = $(temp1[i]).removeClass("current");  
+		}
+
+		$("#aaa"+pageNo).addClass("current");
+	}
+	function skipPage(val,pageNo){
+	    //alert(val);
+		document.getElementById("7eHDPlayer").PlaySeek(val);
+		top.document.getElementById("EHPlayer").callGotoPage(pageNo);
+		selectSkipPage(pageNo);
+		document.getElementById("7eHDPlayer").PlayMD();
+	}
+
+	function optionSwitch(val){
+		   if (val==1){
+				 $("#zjlb").parent("h5").addClass("current");
+				 $("#xxbj").parent("h5").removeClass("current");
+				 $("#xmldiv").show();
+				 $("#xwlist").hide();
+		   }else{
+				 $("#xxbj").parent("h5").addClass("current");
+				 $("#zjlb").parent("h5").removeClass("current");
+				 $("#xmldiv").hide();
+				 $("#xwlist").show();
+		   }
+		}
+	$(function(){
+      var xmlsrc="";
+      $("#showplaysetdetail").hide();
+      gudingheight();
+		$("#xmldiv").hide();
+		$("#bjlist > .h3").hide();
+		$("#bjlist > .box1").hide();
+		$("#bjlist > .h4").show();
+		$("#bjlist > .h5").hide();
+		$("#bjlist > .box").show();
+		$("#bjlist > .box5").hide();
+	  
+	  $(".btn_save").unbind("click");
+	  $(".btn_save").bind("click",function(){
+	//		alert("点了一下保存按钮");
+			var blogtitle = $("#notetitle").val();
+			var blogcontent = $("#notecontent").val();
+			var endtime = $(".endmintime").val();
+			if(blogtitle == ""){
+				  alert("请输入笔记标题");
+				  return true;
+			 }
+			 if(blogcontent == ""){
+				  alert("请输入笔记内容");
+				  return true;
+			 }
+			 $.ajax({
+					url:"widget?type=playvideo&ajax=yes&action=saveAdd&title="+encodeURI(blogtitle)+"&content="+encodeURI(blogcontent)+"&lessonid="+12137+"&time="+endtime,
+					dataType:"html",
+					success:function(msg){	
+						 $("#bjlist > .h3").hide();
+						 $("#bjlist > .h4").show();
+						 $("#bjlist > .h5").hide();
+						 $("#bjlist > .box1").hide();
+						 $("#bjlist > .box").empty();
+						 $("#bjlist > .box5").hide();
+						$(msg).appendTo($("#bjlist > .box"));
+						 $("#bjlist > .box").show();
+						 gudingheight();
+						alert("添加成功");
+					},
+					error:function(){
+						alert("抱歉！提交笔记请求出现错误");
+					}
+				});
+			
+		});
+	  
+	  $(".btn_edit").unbind("click");
+	  $(".btn_edit").bind("click",function(){
+	//		alert("点了一下保存按钮");
+			var blogtitle = $(".notetitle").attr("value");
+			var blogcontent = $(".notecontent").attr("value");
+			var id = $(".btn_edit").attr("no");
+			alert(id);
+			if(blogtitle == ""){
+				  alert("请输入笔记标题");
+				  return true;
+			 }
+			 if(blogcontent == ""){
+				  alert("请输入笔记内容");
+				  return true;
+			 }
+			 $.ajax({
+					url:"widget?type=playvideo&ajax=yes&action=editAdd&title="+encodeURI(blogtitle)+"&content="+encodeURI(blogcontent)+"&lessonid="+12137+"&id="+id,
+					dataType:"html",
+					success:function(msg){	
+						 $("#bjlist > .h3").hide();
+						 $("#bjlist > .h5").hide();
+						 $("#bjlist > .h4").show();
+						 $("#bjlist > .box1").hide();
+						 $("#bjlist > .box").empty();
+						 $("#bjlist > .box5").hide();
+						$(msg).appendTo($("#bjlist > .box"));
+						 $("#bjlist > .box").show();
+						 gudingheight();
+						alert("修改成功");
+					},
+					error:function(){
+						alert("抱歉！提交笔记请求出现错误");
+					}
+				});
+			
+		});
+	  
+	  $(".showplaysetdetail").unbind("click");
+	  $(".showplaysetdetail").click(function(){
+			var temp = $(this).attr("pid");
+			
+			$.ajax({
+				url:"widget?type=playvideodetail&ajax=yes&action=playsetdetail&pid="+temp,
+				dataType:"html",
+				success:function(result){
+					$("#showplaysetdetail").show();
+					$("#showplaysetdetail")[0].innerHTML="";
+					$("#showplaysetdetail").append(result);
+				},
+				error:function(){
+					
+				}	
+			});	
+		});
+
+	});
+	function xmldata(xmlstr){
+		
+		xmlstr=xmlstr.replace(/[\r\n]/g, ""); 
+		xmltmp="<xml>"+xmlstr+"</xml>";  
+		if ($.browser.msie)
+		{
+			xmlstr = new ActiveXObject("Microsoft.XMLDOM");
+			xmlstr.async = false;
+			xmlstr.loadXML(xmltmp);
+		}
+		var i=1;
+		var html="<table width='100%' border='0' cellspacing='0' cellpadding='0' class='table1'>";
+		html+="<tr><td width='100%' height='25' align='center' style='background:#d6eefb;color:#666666;'>标题</td></tr>";
+			//alert($(xmlstr).find("page").html());
+		$(xmlstr).find("page").each(function(){   
+			var $page = $(this);      
+		
+			html+="<tr class='current1' id='aaa1'><td>&nbsp;<a href='javascript:skipPage("+$page.find('syntime').text()+","+i+");'>";
+		    html+=$page.find('title').text();
+		    html+="</a></td></tr>";
+		    arrayDisTm.push($page.find('syntime').text());
+		 });
+		 html+="</table>";
+		 //alert(html);
+		 
+      	 $("#xmldiv").html(html);
+	}
+	
+	
+	function clickTip(){
+		   alert("后台管理员不能添加笔记");
+		}
+		
+		function addtest(uid){
+			if(uid==0){
+				alert("对不起，未登录不能添加笔记");
+			}else{
+				var time = $(".showmintime").val();
+				$(".endmintime").attr("value",time);
+				$("#bjlist > .h3").show();
+				 $("#bjlist > .h5").hide();
+				 $("#bjlist > .h4").hide();
+				 $("#bjlist > .box1").show();
+				 $("#bjlist > .box").hide();
+				 $("#bjlist > .box5").hide();	
+				 $("#notetitle").attr("value","")
+				 $("#notecontent").attr("value","")
+			}
+			 
+			}
+		
+		function returnlist(){
+			 $("#bjlist > .h3").hide();
+			 $("#bjlist > .h5").hide();
+			 $("#bjlist > .h4").show();
+			 $("#bjlist > .box1").hide();
+			 $("#bjlist > .box").show();
+			 $("#bjlist > .box5").hide();
+		}
+		
+		function showdetail(id,lessonid,time){
+			if(id==0){
+				alert("抱歉，暂无信息");
+			}else{
+				document.getElementById("7eHDPlayer").PlaySeek(time);
+				$.ajax({
+					url:"widget?type=playvideodetail&ajax=yes&action=show&id="+id+"&lessonid="+lessonid+"&showpage=0",
+					dataType:"html",
+					success:function(msg){	
+						 $("#bjlist > .h3").hide();
+						 $("#bjlist > .h5").show();
+						 $("#bjlist > .h4").hide();
+						 $("#bjlist > .box1").hide();
+						 $("#bjlist > .box").hide();
+						 $("#bjlist > .box5").empty();
+						 $("#bjlist > .box5").hide();
+						$(msg).appendTo($("#bjlist > .box5"));
+						 $("#bjlist > .box5").show();
+						 $(".btn_edit").attr("no",id);
+					},
+					error:function(){
+						alert("抱歉！提交笔记请求出现错误");
+					}
+				});
+			}
+			
+		}
+		
+		function del(id){
+			$.ajax({
+				url:"widget?type=playvideodetail&ajax=yes&action=del&id="+id+"&lessonid="+12137,
+				dataType:"html",
+				success:function(msg){	
+					 $("#bjlist > .h3").hide();
+					 $("#bjlist > .h5").hide();
+					 $("#bjlist > .h4").show();
+					 $("#bjlist > .box1").hide();
+					 $("#bjlist > .box").hide();
+					 $("#bjlist > .box").empty();
+					 $("#bjlist > .box5").hide();
+					$(msg).appendTo($("#bjlist > .box"));
+					 $("#bjlist > .box").show();
+					 alert("删除成功");
+				},
+				error:function(){
+					alert("抱歉！删除笔记请求出现错误");
+				}
+			});
+		}
+		function gudingheight(){
+			 var temp = $(window).height();
+				if(temp<768){
+					 window.scroll(0,140)
+				}
+		}
+		$(window).resize(function() {
+		    var width = $(this).width();
+		    var height = $(this).height();
+		if(height<768){
+			 window.scroll(0,140)
+		}
+		});
+		
+		function closeask(){
+			$("#showplaysetdetail").hide();
+		}
+		
+		function OnSwitchLine(val){  //换线js  val为换线id
+			//先读取默认扣次的时间
+			var defaulttime = 100000000;
+			//再读取视频当前播放的时间
+			var nowtime = $(".showmintime").val();
+			//如果当前时间大于扣次时间，则刷新页面的时候不扣次，并且把扣次时间设置为100000000
+			if(defaulttime<100000000){  //如果默认播放时间一直为100000000 则永远不扣次
+				if(nowtime>defaulttime){
+					location.href="playvideo-"+val+"_12137_0_1.html?line_time="+nowtime+"&linetype=1";  //没扣次之前的跳转需要传以下参数  line：选择线路的id,line_time：选择线路时的时间,linetype：如果已经扣次则为1
+				}else{
+					location.href="playvideo-"+val+"_12137_0_1.html?line_time="+nowtime;  
+				}
+			}else{
+				location.href="playvideo-"+val+"_12137_0_1.html?line_time="+nowtime+"&linetype=1";  //没扣次之前的跳转需要传以下参数  line：选择线路的id,line_time：选择线路时的时间,linetype：如果已经扣次则为1
+			}
+		}
+		
+		function onPlayState(){
+				if (bGetPlayed==0)
+			{
+				var cookie = '0';
+			if(cookie!=0){
+				document.getElementById("7eHDPlayer").PlaySeek(cookie);	
+			}
+				bGetPlayed = 1;
+			}
+		}
+
+</script>
+</head>
+<body style="height:100%;background:#f5f5f5 url(./statics/flash/images/bg.jpg) no-repeat center top -12px;overflow-y:scroll; ">             
+
+<div id="xmldivflash" >
+</div>
+<div class="main">
+    <div style="top:-200px;width:860px;float:left;overflow;hidden;"><div class="video" id="flashContent">
+     
+     
+     <script type="text/javascript"> 
+				var pageHost = ((document.location.protocol == "https:") ? "https://" :	"http://"); 
+				document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+								+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='点击获取  Adobe Flash player播放器'/></a>" ); 
+	</script>
+    </div></div>
+    <div class="right" style="display:none;" >
+		<div class="news1" id="zjlist" >
+			<div class="title1" style="width:207px;*width:206px;_width:207px;"> 
+				<h5 ><a href="javascript:optionSwitch(1);" id="zjlb">章节列表</a></h5>   
+				<h5 style="margin-left:5px;*margin-left:4px;_margin-left:5px;" class="current"><a href="javascript:optionSwitch(2);" id="xxbj">新闻列表</a></h5>
+			</div>
+			<div class="box" id="xmldiv" style="width:206px\0;*width:206px;_width:207px"></div> <!-- 章节列表页面 -->
+			<div class="box" id="xwlist" style="width:206px\0;*width:206px;_width:207px">
+				<table width="186" border="0" cellspacing="0" cellpadding="0" class="table2">
+	              <tr>
+	                <td height="25" align="center" style="background:#d6eefb;color:#666666;">标题</td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mbaschool.com.cn/news/2017zsjz/" target="_blank">MBA笔试简章</a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mbaschool.com.cn/special/2014_tqms/" target="_blank">MBA提前面试简章</a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mbaschool.com.cn/news/bm/" target="_blank">MBA在线报名 </a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mpaccedu.cn/" target="_blank">MPAcc笔试招生简章</a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mpaccedu.cn/" target="_blank">MPAcc面试招生简章</a></td></td>
+	              </tr>
+	            </table>
+			</div> <!-- 新闻列表页面 --> 
+		</div>
+        
+		<div class="video" style="margin-top:4px;">
+		 
+		    <!--新建笔记开始-->
+		   <div class="news1" id="bjlist">
+	        <h3 class="h4">　　学习笔记<input type="hidden" class="showmintime" size="5" /><input type="hidden" class="endmintime" size="5" />　　<a href="javascript:addtest(21597);" /><img src="./statics/flash/images/btn_crate.gif" align="absmiddle" border="0" style="margin-bottom:5px;_margin-top:6px;" /></a></h3>   
+	        <h3 class="h3"><a class="btn_back" href="javascript:returnlist();"></a><a class="btn_save" href="#"></a></h3>
+	        <h3 class="h5"><a class="btn_back" href="javascript:returnlist();"></a><!-- 返回 --><a class="btn_edit" href="#"></a><!-- 编辑 --></h3>
+	        <!-- 所有笔记页面 -->
+	        <div class="box" style="height:247px;height:240px\0;*height:240px;_height:240px;_width:207px">
+	        
+	            <table width="188" border="0" cellspacing="0" cellpadding="0" class="table2">
+	              <tr>
+	                <td width="65%" height="25" align="center" style="background:#d6eefb;color:#666666;">标题</td>
+	                <td width="35%" align="center" style="background:#d6eefb;color:#666666;">创建日期</td>
+	              </tr>
+	            </table>
+	        </div>
+	        <!-- 增加笔记页面 -->
+	        <div class="box1" style="width:205px;*width:207px;_width:207px;height:240px; ">
+				   <div class="note_title">&nbsp;&nbsp;标题：<input type="text" maxlength="20" value="" style="border:1px solid #cccccc;background:#ffffff;" id="notetitle" name="blogtitile"> </div>
+				   <div class="noteBook" style="width:180px;"><textarea style="height:176px;width:180px;border:0;line-height:22px;font-size:12px;" class="noteBook" id="notecontent" name="blogcontent"></textarea></div>
+			</div>
+			<!-- 显示每条笔记页面 -->
+			<div class="box5"></div>
+	     </div>
+		</div>
+    </div>
+</div>
+<div id="showplaysetdetail" style="z-index:99999999999; background:#ffffff;padding:20px; font-size:14px; color:#333333; width:640px;height:480px;position:absolute;top:20%;left:30%;border:2px solid #dcdcdc;overflow-y:scroll;"></div>
+ 
+</body>
+</html>
