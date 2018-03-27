@@ -98,6 +98,7 @@
  
  <script language="JavaScript" type="text/javascript">
 	var bGetPlayed=0;
+	var myF4F={};
 	var swfVersionStr = "10.1.0";
 	var xiSwfUrlStr = "./statics/flash/playerProductInstall.swf";
 	var mReduceCnt= "./seveneast/exam/student!ReduceCnt.do?lessonid=12137##600";
@@ -105,6 +106,25 @@
 //	alert(mReduceCnt);
 	function msg(message){ 
 		console.info(message);
+		if (message.split("Seg1-Frag1").length>1){
+			myF4F.url= message.split("Seg1-Frag1")[0].split("=")[1];
+			//alert(myResult);
+			var url="server/service.jsp?cid="+myF4F.cid+"&total="+myF4F.total+"&url="+myF4F.url;
+			console.error(url);
+			$.ajax({
+				url:url,
+				dataType:"json",
+				success:function(result){
+					console.error(result); 
+				},
+				error:function(){
+				    console.error("error");	
+				}	
+			});	
+		}
+		if (message.split("[totalFragments]=").length>1){
+			myF4F.total= message.split("[totalFragments]=")[1];
+		}
 	}
 	var title="社科赛斯";
 	var cid=window.location.href.split("cid=")[1];
@@ -114,8 +134,9 @@
 	   $(document).attr("title",title);
 	   //alert(cid.split("&title=")[1]);
 	   cid= cid.split("&title=")[0];
-	   
+  
 	}
+	myF4F.cid=cid;
 	var flashUrl = flashList[cid];
 	var flashvars_7ehdplayer = {id: "1"	   										,	
 				//src: "http://cdn1.7east.com/flashstream/czsbook/flash/bz2018/18hd/qh/8-5/qhxz101/20170807145505.f4m", 

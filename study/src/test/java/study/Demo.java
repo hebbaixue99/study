@@ -129,8 +129,11 @@ public class Demo {
    }
    public static void main(String[] args){
 	   Demo d = new Demo();
+	   
+	   
+	   
 	   //d.login();
-	   //d.getFlash("http://127.0.0.1/playvideo.html");
+	   d.getFlash("http://127.0.0.1/playvideo.html");
 	   
 	  /* JSONObject jo = d.getCourse("http://127.0.0.1/courselist.html");
 	   JSONArray ja = jo.getJSONArray("rows");
@@ -157,7 +160,7 @@ public class Demo {
 			   */
 	  String doc= "AAABW2Fic3QAAAAAAAAADwAAAAPoAAAAAABBsoAAAAAAAAAAAAAAAAAAAQAAABlhc3J0AAAAAAAAAAABAAAAAQAAACQBAAABFmFmcnQAAAAAAAAD6AAAAAAQAAAAAQAAAAAAAAAAAAIItAAAAAIAAAAAAAII1QABx9wAAAAGAAAAAAAJJ8AAAgi0AAAABwAAAAAACzCVAAHH3AAAAAsAAAAAABJPgAACCLQAAAAMAAAAAAAUWFUAAcfcAAAAEAAAAAAAG3dAAAIItAAAABEAAAAAAB2AFQABx9wAAAAVAAAAAAAknwAAAgi0AAAAFgAAAAAAJqfVAAHH3AAAABoAAAAAAC3GwAACCLQAAAAbAAAAAAAvz5UAAcfcAAAAHwAAAAAANu6AAAIItAAAACAAAAAAADj3VQABx9wAAAAkAAAAAABAFkAAAZwcAAAAAAAAAAAAAAAAAAAAAAA" ; //HttpUtil.doGet("http://cdn1.7east.com/flashstream/czsbook/flash/bz2018/cczm/ztpx1/20170911143021.f4m");
 	   System.out.println(doc);
-	   
+	   System.out.println();
 	   final Base64 base64 = new Base64();
 	   final String text = "字串文字";
 	   final byte[] textByte = text.getBytes("UTF-8");
