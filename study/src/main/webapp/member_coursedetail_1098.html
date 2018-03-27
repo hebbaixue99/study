@@ -27,7 +27,7 @@
        <script language="javascript">
      var refreshtime=20000; //10 秒  
      var refreshtimer=setInterval("onlinerefresh()",refreshtime);  
-     var refreshurl="widget?type=onlinerefresh&ajax=yes";
+     var refreshurl="widget.html";
      function onlinerefresh(){  
    		$.ajax({
 			url : refreshurl,
@@ -39,7 +39,7 @@
 		});
      } 
      </script> 
-       <li class="home_login"><a href="member_index.html" class="dl">hebbaixue</a> [<a href="member_logout.html" class="reg">退出</a>]</li> 
+       <li class="home_login"><a href="member_index.html" class="dl">社科赛斯学员</a> [<a href="member_logout.html" class="reg">退出</a>]</li> 
       </div> 
      </ul> 
     </div> 
@@ -234,6 +234,13 @@ var app_path='.'</script>
         </div> 
         <div style="clear:both;"></div> 
         <script>
+        $(".btn").live("click",function(){
+        	var href=$(this).attr("href")+"&title="+$($(this).parent().prev().prev().prev()).text();
+        	//href= encodeURIComponent(href);
+        	$(this).attr("href",href);
+        	
+        });
+        
 var Pager = {
 	init:function(){
 		var self = this;

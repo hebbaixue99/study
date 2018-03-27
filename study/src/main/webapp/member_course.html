@@ -9,17 +9,16 @@
   if (href.split("page=").length>1)
    { 
      begin=href.split("page=")[1];
-     begin="_"+begin.split("&cid=")[0]+"_"+begin.split("&cid=")[1];
+     begin="_"+begin.replace("&cid=")[0]+"_"+begin.replace("&cid=")[1];
      href="member_coursedetail"+begin+".html";
    }else if (href.split("cid=").length>1){ 
      begin="_"+href.split("cid=")[1];
      href="member_coursedetail"+begin+".html";
    }else{
      href="member_index.html"; 
-   } 
-  href=href.replace("_1_","_");
-  window.location.href =href;
+   }
   //document.write(href);
+  window.location.href =href;
  // playvideo.html?cid=1_8907_0_1
   </script>
  </head> 

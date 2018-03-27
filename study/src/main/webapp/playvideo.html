@@ -17,17 +17,105 @@
 	}
 </style>
 <link type="text/css" href="./statics/flash/player.css" rel="stylesheet" />
-<script language="JavaScript" type="text/javascript">
+
+</head>
+<body style="height:100%;background:#f5f5f5 url(./statics/flash/images/bg.jpg) no-repeat center top -12px;overflow-y:scroll; ">             
+
+<div id="xmldivflash" >
+</div>
+<div id="flashtitle" style="text-align:center;font-size:20px;margin-top:50px;display:none;"></div>
+<div class="main" >
+     
+    <div style="width:860px;float:left;overflow;hidden;"><div class="video" id="flashContent">
+     
+     
+     <script type="text/javascript"> 
+				var pageHost = ((document.location.protocol == "https:") ? "https://" :	"http://"); 
+				document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+								+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='点击获取  Adobe Flash player播放器'/></a>" ); 
+	</script>
+    </div></div>
+    <div class="right" style="display:none;" >
+		<div class="news1" id="zjlist" >
+			<div class="title1" style="width:207px;*width:206px;_width:207px;"> 
+				<h5 ><a href="javascript:optionSwitch(1);" id="zjlb">章节列表</a></h5>   
+				<h5 style="margin-left:5px;*margin-left:4px;_margin-left:5px;" class="current"><a href="javascript:optionSwitch(2);" id="xxbj">新闻列表</a></h5>
+			</div>
+			<div class="box" id="xmldiv" style="width:206px\0;*width:206px;_width:207px"></div> <!-- 章节列表页面 -->
+			<div class="box" id="xwlist" style="width:206px\0;*width:206px;_width:207px">
+				<table width="186" border="0" cellspacing="0" cellpadding="0" class="table2">
+	              <tr>
+	                <td height="25" align="center" style="background:#d6eefb;color:#666666;">标题</td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mbaschool.com.cn/news/2017zsjz/" target="_blank">MBA笔试简章</a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mbaschool.com.cn/special/2014_tqms/" target="_blank">MBA提前面试简章</a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mbaschool.com.cn/news/bm/" target="_blank">MBA在线报名 </a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mpaccedu.cn/" target="_blank">MPAcc笔试招生简章</a></td></td>
+	              </tr>
+	              <tr>
+	                <td height="25"><a href="http://www.mpaccedu.cn/" target="_blank">MPAcc面试招生简章</a></td></td>
+	              </tr>
+	            </table>
+			</div> <!-- 新闻列表页面 --> 
+		</div>
+        
+		<div class="video" style="margin-top:4px;">
+		 
+		    <!--新建笔记开始-->
+		   <div class="news1" id="bjlist">
+	        <h3 class="h4">　　学习笔记<input type="hidden" class="showmintime" size="5" /><input type="hidden" class="endmintime" size="5" />　　<a href="javascript:addtest(21597);" /><img src="./statics/flash/images/btn_crate.gif" align="absmiddle" border="0" style="margin-bottom:5px;_margin-top:6px;" /></a></h3>   
+	        <h3 class="h3"><a class="btn_back" href="javascript:returnlist();"></a><a class="btn_save" href="#"></a></h3>
+	        <h3 class="h5"><a class="btn_back" href="javascript:returnlist();"></a><!-- 返回 --><a class="btn_edit" href="#"></a><!-- 编辑 --></h3>
+	        <!-- 所有笔记页面 -->
+	        <div class="box" style="height:247px;height:240px\0;*height:240px;_height:240px;_width:207px">
+	        
+	            <table width="188" border="0" cellspacing="0" cellpadding="0" class="table2">
+	              <tr>
+	                <td width="65%" height="25" align="center" style="background:#d6eefb;color:#666666;">标题</td>
+	                <td width="35%" align="center" style="background:#d6eefb;color:#666666;">创建日期</td>
+	              </tr>
+	            </table>
+	        </div>
+	        <!-- 增加笔记页面 -->
+	        <div class="box1" style="width:205px;*width:207px;_width:207px;height:240px; ">
+				   <div class="note_title">&nbsp;&nbsp;标题：<input type="text" maxlength="20" value="" style="border:1px solid #cccccc;background:#ffffff;" id="notetitle" name="blogtitile"> </div>
+				   <div class="noteBook" style="width:180px;"><textarea style="height:176px;width:180px;border:0;line-height:22px;font-size:12px;" class="noteBook" id="notecontent" name="blogcontent"></textarea></div>
+			</div>
+			<!-- 显示每条笔记页面 -->
+			<div class="box5"></div>
+	     </div>
+		</div>
+    </div>
+</div>
+<div id="showplaysetdetail" style="z-index:99999999999; background:#ffffff;padding:20px; font-size:14px; color:#333333; width:640px;height:480px;position:absolute;top:20%;left:30%;border:2px solid #dcdcdc;overflow-y:scroll;"></div>
+ 
+ <script language="JavaScript" type="text/javascript">
 	var bGetPlayed=0;
 	var swfVersionStr = "10.1.0";
 	var xiSwfUrlStr = "./statics/flash/playerProductInstall.swf";
 	var mReduceCnt= "./seveneast/exam/student!ReduceCnt.do?lessonid=12137##600";
 	//左边视频 
 //	alert(mReduceCnt);
-	function msg(message){
+	function msg(message){ 
 		console.info(message);
 	}
+	var title="社科赛斯";
 	var cid=window.location.href.split("cid=")[1];
+	if(cid.split("&title=").length>1){
+	   //$("#flashtitle").html(decodeURIComponent(cid.split("&title=")[1]));
+	   title=decodeURIComponent(cid.split("&title=")[1])
+	   $(document).attr("title",title);
+	   //alert(cid.split("&title=")[1]);
+	   cid= cid.split("&title=")[0];
+	   
+	}
 	var flashUrl = flashList[cid];
 	var flashvars_7ehdplayer = {id: "1"	   										,	
 				//src: "http://cdn1.7east.com/flashstream/czsbook/flash/bz2018/18hd/qh/8-5/qhxz101/20170807145505.f4m", 
@@ -35,7 +123,7 @@
 				autoPlay: "true"	   		,
 				controlBarAutoHide: "false"	,	
 				controlBarPosition: "bottom",
-				tipinfo:"社科赛斯",
+				tipinfo:title,
 				modifystudyrec:mReduceCnt,
 		        skin:"./statics/flash/blue/blue.xml",
 				scaleMode:"stretch"};
@@ -382,81 +470,6 @@
 		}
 
 </script>
-</head>
-<body style="height:100%;background:#f5f5f5 url(./statics/flash/images/bg.jpg) no-repeat center top -12px;overflow-y:scroll; ">             
-
-<div id="xmldivflash" >
-</div>
-<div class="main">
-    <div style="top:-200px;width:860px;float:left;overflow;hidden;"><div class="video" id="flashContent">
-     
-     
-     <script type="text/javascript"> 
-				var pageHost = ((document.location.protocol == "https:") ? "https://" :	"http://"); 
-				document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
-								+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='点击获取  Adobe Flash player播放器'/></a>" ); 
-	</script>
-    </div></div>
-    <div class="right" style="display:none;" >
-		<div class="news1" id="zjlist" >
-			<div class="title1" style="width:207px;*width:206px;_width:207px;"> 
-				<h5 ><a href="javascript:optionSwitch(1);" id="zjlb">章节列表</a></h5>   
-				<h5 style="margin-left:5px;*margin-left:4px;_margin-left:5px;" class="current"><a href="javascript:optionSwitch(2);" id="xxbj">新闻列表</a></h5>
-			</div>
-			<div class="box" id="xmldiv" style="width:206px\0;*width:206px;_width:207px"></div> <!-- 章节列表页面 -->
-			<div class="box" id="xwlist" style="width:206px\0;*width:206px;_width:207px">
-				<table width="186" border="0" cellspacing="0" cellpadding="0" class="table2">
-	              <tr>
-	                <td height="25" align="center" style="background:#d6eefb;color:#666666;">标题</td>
-	              </tr>
-	              <tr>
-	                <td height="25"><a href="http://www.mbaschool.com.cn/news/2017zsjz/" target="_blank">MBA笔试简章</a></td></td>
-	              </tr>
-	              <tr>
-	                <td height="25"><a href="http://www.mbaschool.com.cn/special/2014_tqms/" target="_blank">MBA提前面试简章</a></td></td>
-	              </tr>
-	              <tr>
-	                <td height="25"><a href="http://www.mbaschool.com.cn/news/bm/" target="_blank">MBA在线报名 </a></td></td>
-	              </tr>
-	              <tr>
-	                <td height="25"><a href="http://www.mpaccedu.cn/" target="_blank">MPAcc笔试招生简章</a></td></td>
-	              </tr>
-	              <tr>
-	                <td height="25"><a href="http://www.mpaccedu.cn/" target="_blank">MPAcc面试招生简章</a></td></td>
-	              </tr>
-	            </table>
-			</div> <!-- 新闻列表页面 --> 
-		</div>
-        
-		<div class="video" style="margin-top:4px;">
-		 
-		    <!--新建笔记开始-->
-		   <div class="news1" id="bjlist">
-	        <h3 class="h4">　　学习笔记<input type="hidden" class="showmintime" size="5" /><input type="hidden" class="endmintime" size="5" />　　<a href="javascript:addtest(21597);" /><img src="./statics/flash/images/btn_crate.gif" align="absmiddle" border="0" style="margin-bottom:5px;_margin-top:6px;" /></a></h3>   
-	        <h3 class="h3"><a class="btn_back" href="javascript:returnlist();"></a><a class="btn_save" href="#"></a></h3>
-	        <h3 class="h5"><a class="btn_back" href="javascript:returnlist();"></a><!-- 返回 --><a class="btn_edit" href="#"></a><!-- 编辑 --></h3>
-	        <!-- 所有笔记页面 -->
-	        <div class="box" style="height:247px;height:240px\0;*height:240px;_height:240px;_width:207px">
-	        
-	            <table width="188" border="0" cellspacing="0" cellpadding="0" class="table2">
-	              <tr>
-	                <td width="65%" height="25" align="center" style="background:#d6eefb;color:#666666;">标题</td>
-	                <td width="35%" align="center" style="background:#d6eefb;color:#666666;">创建日期</td>
-	              </tr>
-	            </table>
-	        </div>
-	        <!-- 增加笔记页面 -->
-	        <div class="box1" style="width:205px;*width:207px;_width:207px;height:240px; ">
-				   <div class="note_title">&nbsp;&nbsp;标题：<input type="text" maxlength="20" value="" style="border:1px solid #cccccc;background:#ffffff;" id="notetitle" name="blogtitile"> </div>
-				   <div class="noteBook" style="width:180px;"><textarea style="height:176px;width:180px;border:0;line-height:22px;font-size:12px;" class="noteBook" id="notecontent" name="blogcontent"></textarea></div>
-			</div>
-			<!-- 显示每条笔记页面 -->
-			<div class="box5"></div>
-	     </div>
-		</div>
-    </div>
-</div>
-<div id="showplaysetdetail" style="z-index:99999999999; background:#ffffff;padding:20px; font-size:14px; color:#333333; width:640px;height:480px;position:absolute;top:20%;left:30%;border:2px solid #dcdcdc;overflow-y:scroll;"></div>
  
 </body>
 </html>
