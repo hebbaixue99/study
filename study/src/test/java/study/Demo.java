@@ -128,6 +128,10 @@ public class Demo {
 	   return "";
    }
    public static void main(String[] args){
+	   study.FileUtil.readFile("d:/flash");
+	   
+   }
+   public static void main1(String[] args){
 	   Demo d = new Demo();
 	   
 	   

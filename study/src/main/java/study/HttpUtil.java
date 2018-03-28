@@ -51,6 +51,7 @@ public class HttpUtil {
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {  
                 /**读取服务器返回过来的json字符串数据**/  
                 String strResult = EntityUtils.toString(response.getEntity());  
+                
                   
                 return strResult;  
             }  
@@ -60,6 +61,36 @@ public class HttpUtil {
         }  
           
         return null;  
+    }  
+    /** 
+     * get请求 
+     * @return 
+     */  
+    public static void doGetB(String url) {  
+        try {  
+            HttpClient client = new DefaultHttpClient();  
+            //发送get请求  
+            HttpGet request = new HttpGet(url);  
+            HttpResponse response = client.execute(request);  
+ 
+            /**请求发送成功，并得到响应**/  
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {  
+                /**读取服务器返回过来的json字符串数据**/  
+            	response.setHeader("Content-Type", "video/f4f");
+                byte[] byteResult = EntityUtils.toByteArray(response.getEntity());  
+               // byte[] my = new byte[byteResult.length-9];
+               // System.arraycopy(byteResult, 9, my, 0,my.length);
+                
+                
+                FileUtil.saveRemoteFile(url,byteResult)  ;
+               // return strResult;  
+            }  
+        }   
+        catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+          
+       // return null;  
     }  
       
     /** 
