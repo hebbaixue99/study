@@ -80,7 +80,7 @@ public class Hj {
 	public static String getBook(){
 		JSONObject oj = new JSONObject();
 		// "unitId":111,"userID":76615124,"isFinished":true,"bookId":11990,"unitIndex":111,"studyWordCount":10,"studyStars":3,"finishedDate":"2018-09-04T19:46:00.562"
-		int id = 159;
+		int id = 380;
 		oj.put("unitId", id);
 		oj.put("unitIndex", id);
 		oj.put("userID", 76615124);
@@ -124,7 +124,7 @@ public class Hj {
 		String jsonString = JSON.toJSONString(oa,
 		SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
 		//System.out.println(jsonString);
-		//System.out.println(JsonFormatTool.formatJson(oa.toJSONString()));
+		System.out.println(JsonFormatTool.formatJson(oa.toJSONString()));
 		
         saveDate(dir+"hjConfig",config);
         return JsonFormatTool.formatJson(oa.toJSONString());
