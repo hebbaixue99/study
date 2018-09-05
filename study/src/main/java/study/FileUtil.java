@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Iterator;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -31,7 +32,7 @@ public class FileUtil {
 		  System.out.println("readFile:"+o);
 		  FileOutputStream fos=new FileOutputStream(fName,false);
 		   
-		  ObjectOutputStream oos=new ObjectOutputStream(fos);
+		  ObjectOutputStream oos=new ObjectOutputStream( fos);
 		  
 		  oos.writeObject(o);  
 		  oos.close();  
@@ -60,7 +61,7 @@ public class FileUtil {
 		}
 	}
 	public static void main(String[] args){
-		String url="http://cdn1.7east.com/flashstream/czsbook/flash/bz2018/18hd/ch/ch101/2016111919236727Seg1-Frag1";
+		/*String url="http://cdn1.7east.com/flashstream/czsbook/flash/bz2018/18hd/ch/ch101/2016111919236727Seg1-Frag1";
 		//String dir = "e:/flashstream"+ url.split("flashstream")[1].substring(0, url.split("flashstream")[1].lastIndexOf("/"));
 		//String dir = "e:/flashstream/f1/f2/f3/f4/f5";
 		//String buf = "文件测试";
@@ -77,9 +78,25 @@ public class FileUtil {
 		    	HttpUtil.doGetB(url);
 		    	System.out.println(url);
 		    }
-		}  
-
+		}  */
+		Calendar now = Calendar.getInstance();
+		Calendar tomorrow = Calendar.getInstance();
+		tomorrow.set(Calendar.HOUR_OF_DAY, 24);   
+		tomorrow.set(Calendar.SECOND, 0);   
+		tomorrow.set(Calendar.MINUTE, 0);   
+		tomorrow.set(Calendar.MILLISECOND, 0);   
+		
+		//Date now = new Date();
+        System.out.println(now.getTime());
+        //一天后的时间
+      
+        System.out.println(tomorrow.getTime());
+        System.out.println( (tomorrow.getTimeInMillis()-now.getTimeInMillis())/(1000*60));
+        
 		//HttpUtil.doGetB(url);
 		//saveRemoteFile(url,buf.getBytes());
+		
+		
+		
 	}
 }
