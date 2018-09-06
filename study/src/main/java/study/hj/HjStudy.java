@@ -1,160 +1,169 @@
 package study.hj;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.zip.InflaterOutputStream;
-
-import org.apache.commons.codec.binary.Base64;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import study.tools.DateUtil;
+import study.tools.HttpClientUtil;
+import study.tools.JsonFormatTool;
+import study.tools.MyHttpResponse;
+import study.tools.StudyConfig;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class HjStudy {
-	Map<String, String> loginPageCookies = new HashMap();
-	Map<String, String> userCookies = new HashMap();
-	JSONObject courses = new JSONObject();
-   public void login(){
-	   try{
-		   
-		   File file = new File("e:/userCookies1.txt");
-		   if (file.exists()){
-		   FileInputStream fis=new FileInputStream("e:/userCookies1.txt");  
-		   ObjectInputStream ois=new ObjectInputStream(fis);
-		   //readObject 方法用于从流读取对象。应该使用 Java 的安全强制转换来获取所需的类型。在 Java 中，字符串和数组都是对象，所以在序列化期间将其视为对象。读取时，需要将其强制转换为期望的类型。
-		   //connection.setRequestProperty("Accept-Charset", "utf-8");  //设置编码语言
-           //connection.setRequestProperty("X-Auth-Token", "token");  //设置请求的token
-           //connection.setRequestProperty("Connection", "keep-alive");  //设置连接的状态
-		   userCookies=(HashMap)ois.readObject(); 
-		   ois.close(); 
-		   }
-		   String login="https://pass.hujiang.com/v2/Handler/UCenter.json?action=Login&business_domain=yyy_cichang&captchaVersion=2&imgcode=&isapp=true&loginType=normal&macRawPwd=false&password=e0ead475ec608460c0cdebf48d3db9b6&token=&userName=13671326787&user_domain=hj ";
-		   if (userCookies.size()<=0){
-	       loginPageCookies = Jsoup.connect(login)
-	    		   .header("Content-Type", "text/*")
-	    		   .header("Accept-Charset", "utf-8")
-	    		   .header("Mimetype", "application/json")
-	    		   .header("charset", "utf-8")
-	            .method(Connection.Method.GET).execute().cookies();
-	       
-	     Connection.Response loginResponse = Jsoup.connect(login)
-	    		 .header("Content-Type", "application/json")
-	    		 .header("Accept-Charset", "utf-8")
-	            //.data("action", "login", "username", "hebbaixue", "password", "bx117128", "forward","")
-	            .header("Device-Id", "62F56455-CBD8-411D-8279-B7252635E22B")
-	            .header("local-Date", DateUtil.getStringDate())
-	            .header("hj-appsign", "62F56455-CBD8-411D-8279-B7252635E22B")
-	            .header("hj-appkey", "62F56455-CBD8-411D-8279-B7252635E22B")
-	            .header("hj-deviceId", "62F56455-CBD8-411D-8279-B7252635E22B")
-	            .cookies(loginPageCookies)
-	            .method(Connection.Method.GET).execute();
-	     userCookies = loginResponse.cookies();
-	     if (userCookies==null || userCookies.size()==0){
-	    	 userCookies = loginPageCookies; 
-	     }
-		   }
-		   Element indexResponse = Jsoup.connect("https://pass-cdn.hjapi.com/v1.1/access_token/convert")
-	            .cookies(userCookies).get().body();
-		  //System.out.println(indexResponse);
-	  FileOutputStream fos=new FileOutputStream("e:/userCookies1.txt",false);
-	  //文件的序列化  
-	  ObjectOutputStream oos=new ObjectOutputStream(fos);
-	  //writeObject 方法用于将对象写入流中。所有对象（包括 String 和数组）都//可以通过 writeObject 写入。  
-	  oos.writeObject(userCookies);  
-	  oos.close();  
-	    
-	   }catch(Exception e){
-		   e.printStackTrace();
-	   } 
-   }
-   public JSONObject getCourse(String url){
-	  String json = "";
-	  try{
-	 Connection.Response courseResponse = Jsoup.connect(url).header("Content-Type", "application/json;charset=UTF-8").ignoreContentType(true).execute() ;
-	 json=courseResponse.body();
-	  }catch(Exception e){
-		  e.printStackTrace();
-	  }
-	  JSONObject jo = JSONObject.parseObject(json);
-	  return jo;
-   }
-   public void getCourseList(String url,String cid){
-	   try{
-	   Document doc = Jsoup.connect(url).cookies(userCookies).get();
+	private static String dir="./data/";
+	public static void main(String[] args) {
+	 // login();	
+	 // String token= getToken();
+	//  String books = getBook(false);
+	 // study(token,books);
+	  JSONObject hjStudy = new JSONObject();
+	  MyHttpResponse login = new MyHttpResponse();
+	  MyHttpResponse token = new MyHttpResponse();
+	  JSONObject config = new JSONObject();
+	  hjStudy.put("login", login);
+	  hjStudy.put("token", token);
+	  hjStudy.put("config", config);
+	  //saveData("hjStudy",hjStudy);
+	  JSONObject t = (JSONObject)loadData("hjStudy",null);
+	  System.out.println(t);
+	  StudyConfig sc = new StudyConfig();
+	  JSONObject scj = JSONObject.parseObject(sc.toString());
 	   
-	     // FileOutputStream fos=new FileOutputStream("d:/success/member_coursedetail_"+cid+".html",false);
-	      /* 写入Txt文件 */  
-         /* File writename = new File("d:/success/member_coursedetail_"+cid+".html"); // 相对路径，如果没有则要建立一个新的output。txt文件  
-          writename.createNewFile(); // 创建新文件  
-          BufferedWriter out = new BufferedWriter(new FileWriter(writename));  
-          out.write(doc.toString()); // \r\n即为换行  
-          out.flush(); // 把缓存区内容压入文件  
-          out.close(); // 最后记得关闭文件  
-         */
-	    Elements ems= doc.getElementsByClass("lesson_content1");
-	   if (ems!=null&&ems.size()>0){
-		   Elements as=ems.get(0).select("a");
-		   if(as!=null){
-			   for(int i= 0; i<as.size();i++){
-				 Element a = as.get(i);
-				// System.out.println(a.attr("href"));
-				
-				String ccid = a.attr("href").replace(".", ",").split(",")[0].split("-")[1];
-				String flash =getFlash("./"+a.attr("href"));
-				//String flash =getFlash("http://127.0.0.1/"+a.attr("href"));
-				 courses.put(ccid, flash); 
-				//System.out.println("http://127.0.0.1:8000/playvideo.html?cid="+ccid);
-			   }
-		   }
-	   } 
-	   
-	   
-	   }catch(Exception e){
-		   
-	   }
-   }
-   public String getFlash(String url){
-	   try{
-	   String doc = Jsoup.connect(url).cookies(userCookies).execute().body();
-	   String[] docs = doc.split("var flashvars_7ehdplayer = ");
-	   if (docs.length>1){
-		   String ds = docs[1];
-		   String[] fs = ds.split("var params_7ehdplayer");
-		   if (fs.length>1){
-			   String json= fs[0].trim().replace(";", "");
-			   json= json.split("src:")[1].split(".f4m")[0];
-			   json=json.trim().replace("\"", "")+".f4m";
-			   return json; 
-		   }
-	   }
-	   }catch(Exception e){
-		  e.printStackTrace(); 
-	   }
-	   return "";
-   }
-   public static void main1(String[] args){
-	   study.FileUtil.readFile("d:/flash");
-	   
-   }
-   public static void main(String[] args){
-	   HjStudy h = new HjStudy();
-	   h.login();
-	   
-       
-   }
-   
-}
+	  System.out.println(scj);
+	  System.out.println(sc.toString());
+	  
+	  
+	}
+	public static String getBook(boolean forceUpdate){
+		JSONObject oj = new JSONObject();
+		// 12817 "unitId":111,"userID":76615124,"isFinished":true,"bookId":11990,"unitIndex":111,"studyWordCount":10,"studyStars":3,"finishedDate":"2018-09-04T19:46:00.562"
+		StudyConfig sc = new StudyConfig();
+		
+		if (!forceUpdate){
+		   oj = (JSONObject)loadData("hjConfig",oj);
+		}
+		String study = updateBook(oj);
+		return study;
+		
+	}
+	public static void study(String token,String books){
+		String studyUrl = "https://cichang.hjapi.com/v3/user/me/books/finished_units";
+		Map<String,String> headers = new HashMap<String,String>();
+		headers.put("Device-Id", "62F56455-CBD8-411D-8279-B7252635E22B");
+		headers.put("local-Date", DateUtil.getStringDate());
+		headers.put("Access-Token", token);
+		MyHttpResponse res = HttpClientUtil.httpPutRaw(studyUrl, books, headers, "UTF-8");
+		System.out.println(res.getBody());
 
+	}
+	public static void login(){
+		try{
+		  
+		  String loginUrl = "https://pass.hujiang.com/v2/Handler/UCenter.json?";
+		  String req= "action=Login&business_domain=yyy_cichang&captchaVersion=2&isapp=true&loginType=normal&macRawPwd=false&password=e0ead475ec608460c0cdebf48d3db9b6&userName=13671326787&user_domain=hj";
+		  MyHttpResponse res = (MyHttpResponse)loadData("hjLogin",null); 
+		  if (res==null){
+			  res= HttpClientUtil.httpGet(loginUrl+req, null, "UTF-8");
+			  saveData("hjLogin",res);
+		  }
+		 // System.out.println(res.getBody());
+		 // System.out.println(res.getHeaders());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public static String getToken(){
+		MyHttpResponse res = (MyHttpResponse)loadData(dir+"hjLogin",null);
+		Map<String,String> headers = new HashMap<String,String>();
+		headers.put("Device-Id", "62F56455-CBD8-411D-8279-B7252635E22B");
+		headers.put("local-Date", DateUtil.getStringDate());
+		headers.put("hj_deviceId", "62F56455-CBD8-411D-8279-B7252635E22B");
+		headers.put("hj_appsign", "9294608a724f43e348f1950112714d97");
+		headers.put("hj_appkey", "45fd17e02003d89bee7f046bb494de13");
+		
+		JSONObject oj = JSONObject.parseObject(res.getBody());
+		JSONObject req = new JSONObject();
+		req.put("club_auth_cookie", oj.getJSONObject("Data").getString("Cookie"));
+		String tokenUrl="https://pass-cdn.hjapi.com/v1.1/access_token/convert";
+		String stringJson = req.toJSONString();
+		MyHttpResponse token = (MyHttpResponse)loadData("hjToken",null);
+		if (token==null){
+		   token= HttpClientUtil.httpPostRaw(tokenUrl,stringJson, headers, "UTF-8");
+		   saveData(dir+"hjToken",token);
+		}
+		//System.out.println(token.getBody());
+		JSONObject tk = JSONObject.parseObject(token.getBody());
+		return tk.getJSONObject("data").getString("access_token");
+		
+	}
+	public static String  updateBook(JSONObject config){
+		JSONArray oa = new JSONArray();
+		int k = config.getIntValue("unitIndex");
+		String sd = config.getString("finishedDate");
+		sd = DateUtil.getPreTime(sd);   
+		for (int i = 0; i < config.getIntValue("studyCount"); i++) {
+			JSONObject oj = new JSONObject();
+			// "unitId":111,"userID":76615124,"isFinished":true,"bookId":11990,"unitIndex":111,"studyWordCount":10,"studyStars":3,"finishedDate":"2018-09-04T19:46:00.562"
+			k++;
+			oj.put("unitId", k);
+			oj.put("unitIndex", k);
+			oj.put("userID", 76615124);
+			oj.put("isFinished", true);
+			oj.put("studyWordCount", config.getInteger("studyWordCount"));
+			oj.put("studyStars", 3);
+			oj.put("bookId", config.getInteger("bookId"));
+			//oj.put("finishedDate", "2018-09-04T" + "21:" + (i+10) +":"+(int)(Math.random()*50 + 10)+"."+(int)(Math.random()*900 + 100));
+			sd = DateUtil.getPreTime(sd);
+			oj.put("finishedDate",sd);
+			oa.add(oj);
+		}
+		config.put("unitIndex", k);
+		config.put("finishedDate", sd);
+		String jsonString = JSON.toJSONString(oa,
+		SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
+		//System.out.println(jsonString);
+		System.out.println(JsonFormatTool.formatJson(oa.toJSONString()));
+		
+        saveData("hjConfig",config);
+        return JsonFormatTool.formatJson(oa.toJSONString());
+	}
+	private static Object loadData(String fn, Object config){
+		Object ret=  config;
+		try{
+		   File file = new File(dir+fn);
+		   if (file.exists()){
+		   FileInputStream fis=new FileInputStream(dir+fn);  
+		   ObjectInputStream ois=new ObjectInputStream(fis);
+		   ret=ois.readObject(); 
+		   ois.close(); 
+		   }else{
+			   
+		   }
+		}catch(Exception e){
+			
+		}
+		return ret;
+	}
+	private static void saveData(String fn, Object config){
+		try{
+		 FileOutputStream fos=new FileOutputStream(dir+fn,false);
+		  //文件的序列化  
+		  ObjectOutputStream oos=new ObjectOutputStream(fos);
+		  //writeObject 方法用于将对象写入流中。所有对象（包括 String 和数组）都//可以通过 writeObject 写入。  
+		  oos.writeObject(config);  
+		  oos.close(); 
+		}catch(Exception e){}
+	}
+	
+	
+}
