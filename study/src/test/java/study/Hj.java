@@ -28,10 +28,10 @@ public class Hj {
 	private static int studyWordCount=10;
 	
 	public static void main(String[] args) {
-	  init(10856,0,10,false,"2018-09-07T08:40:00.000");
+	  init(10856,0,10,10,false,"2018-09-07T08:40:00.000");
 	  login();	
 	  String token= getToken();
-	  String books = getBook(force);
+	  String books = getBook();
 	  study(token,books);
 	  /*JSONObject hjStudy = new JSONObject();
 	  MyHttpResponse login = new MyHttpResponse();
