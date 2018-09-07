@@ -20,10 +20,18 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class Hj {
 	private static String dir="./data/";
+	private static int bookId = 0 ;
+	private static int unitid = 0;
+	private static boolean force = false;
+	private static String update = "";
+	private static int studyCount= 10;
+	private static int studyWordCount=10;
+	
 	public static void main(String[] args) {
+	  init(10856,0,10,false,"2018-09-07T08:40:00.000");
 	  login();	
 	  String token= getToken();
-	  String books = getBook(false);
+	  String books = getBook(force);
 	  study(token,books);
 	  /*JSONObject hjStudy = new JSONObject();
 	  MyHttpResponse login = new MyHttpResponse();
@@ -37,24 +45,34 @@ public class Hj {
 	  System.out.println(t);*/
 	  
 	}
-	public static String getBook(boolean forceUpdate){
+	public static void init(int _bookId,int _unitid, int _studyCount,int _studyWordCount,boolean _force,String _update){
+		update=_update ;
+		bookId = _bookId;
+		unitid=_unitid;
+		force=_force;
+		studyCount=_studyCount;
+		studyWordCount = _studyWordCount;
+	}
+	public static String getBook(){
 		JSONObject oj = new JSONObject();
 		// 12817 "unitId":111,"userID":76615124,"isFinished":true,"bookId":11990,"unitIndex":111,"studyWordCount":10,"studyStars":3,"finishedDate":"2018-09-04T19:46:00.562"
-		int id = 0;
-		oj.put("unitId", id);
-		oj.put("unitIndex", id);
+		int id = 30;
+		oj.put("unitId", unitid);
+		oj.put("unitIndex", unitid);
 		oj.put("userID", 76615124);
 		oj.put("isFinished", true);
-		oj.put("studyWordCount",10);
+		oj.put("studyWordCount",studyWordCount);
 		oj.put("studyStars", 3);
-		oj.put("bookId", 10305);
-		oj.put("studyCount", 20);
+		oj.put("bookId", bookId);
+		oj.put("studyCount", studyCount);
 		//oj.put("finishedDate", "2018-09-04T" + "21:" + (i+10) +":"+(int)(Math.random()*50 + 10)+"."+(int)(Math.random()*900 + 100));
-		String sd = "2018-09-06T12:40:00.000";
+		//String sd = "2018-09-07T08:40:00.000";
 		//sd = DateUtil.getPreTime(sd);
-		oj.put("finishedDate",sd);
-		if (!forceUpdate){
+		oj.put("finishedDate",update);
+		if (force){
 		   oj = (JSONObject)loadData("hjConfig",oj);
+		}else{
+			
 		}
 		String study = updateBook(oj);
 		return study;
