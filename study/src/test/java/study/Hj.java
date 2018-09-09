@@ -28,21 +28,11 @@ public class Hj {
 	private static int studyWordCount=10;
 	
 	public static void main(String[] args) {
-	  init(10856,0,10,10,false,"2018-09-07T08:40:00.000");
+	  init(12329,0,190,10,true,"2018-09-09T05:00:00.000");
 	  login();	
 	  String token= getToken();
 	  String books = getBook();
 	  study(token,books);
-	  /*JSONObject hjStudy = new JSONObject();
-	  MyHttpResponse login = new MyHttpResponse();
-	  MyHttpResponse token = new MyHttpResponse();
-	  JSONObject config = new JSONObject();
-	  hjStudy.put("login", login);
-	  hjStudy.put("token", token);
-	  hjStudy.put("config", config);
-	  //saveData("hjStudy",hjStudy);
-	  JSONObject t = (JSONObject)loadData("hjStudy",null);
-	  System.out.println(t);*/
 	  
 	}
 	public static void init(int _bookId,int _unitid, int _studyCount,int _studyWordCount,boolean _force,String _update){
@@ -69,7 +59,7 @@ public class Hj {
 		//String sd = "2018-09-07T08:40:00.000";
 		//sd = DateUtil.getPreTime(sd);
 		oj.put("finishedDate",update);
-		if (force){
+		if (!force){
 		   oj = (JSONObject)loadData("hjConfig",oj);
 		}else{
 			
